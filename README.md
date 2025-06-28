@@ -21,11 +21,15 @@ pip install -r requirements.txt
 # Run the project
 python main.py
 
+    ## This project uses streamlit run streamlit
+    streamlit run main.py
+
 # Deactivate when done
 deactivate
+
+# Freeze requirements.txt after installing new package
+pip freeze > requirements.txt
 ```
-
-
 ---
 
 ### 🧠 1. **Core Components of Agentic AI Architecture**
@@ -94,6 +98,7 @@ To build a **Customer Service Auto-Agent**, you’ll want to combine LLMs with m
 
 * Acts as a Tier 1 support agent.
 * Responds to FAQs, processes refund requests, and escalates complex issues.
+* **SaaS Customer Support Agent or Digital Product Support Agent**: The customer support agent provides assistance for a wide range of common user needs, including account access issues (like password resets and email changes), billing and subscription questions (such as payment methods, invoices, and cancellations), technical troubleshooting (e.g., slow dashboard, login problems), product usage guidance (like app features, integrations, and offline mode), data and privacy policies, and general platform support (including browser compatibility, language settings, and two-factor authentication). When questions fall outside its knowledge, the agent gracefully escalates to human support.
 
 ---
 
@@ -167,8 +172,50 @@ Repeat or Escalate
 Use Gemini’s **function calling** or **LangChain agents** to allow dynamic tool usage (e.g., calling `check_order_status(order_id)` when the user mentions an order).
 
 ---
+# Understanding Model Parameters
 
+These parameters are used to control the behavior of a language model when generating responses.
+
+### 1. **temperature=0.2**
+   - **Purpose:** Controls the randomness/creativity of the output.
+   - **Effect:**
+     - **Low value (e.g., 0.2):** Produces focused, predictable, and deterministic responses.
+     - **Higher value:** Introduces more creativity and variability in the output.
+
+### 2. **max_output_tokens=512**
+   - **Purpose:** Limits the number of tokens the model can generate in its response.
+   - **Effect:** 
+     - **512 tokens limit:** The model will stop after generating 512 tokens, preventing overly long outputs.
+
+### 3. **top_p=0.95**
+   - **Purpose:** Controls the *nucleus sampling*, limiting the token selection to the top `p` tokens based on cumulative probability.
+   - **Effect:**
+     - **`top_p=0.95`:** The model will consider tokens that account for 95% of the probability distribution, allowing for creativity while maintaining coherence.
+
+### 4. **top_k=40**
+   - **Purpose:** Limits the next token selection to the top `k` most probable tokens.
+   - **Effect:**
+     - **`top_k=40`:** The model will only consider the top 40 most likely tokens, avoiding unlikely and irrelevant choices.
+
+### 5. **system_prompt=FAQ_SYSTEM_PROMPT**
+   - **Purpose:** Provides predefined instructions or context to guide the model’s behavior.
+   - **Effect:** 
+     - The model will respond in a structured FAQ style, offering clear and concise answers that follow an FAQ format.
+
+
+### Library and Options Info:
+
+- **Creativity:** `temperature=0.2` ensures predictable, focused answers.
+- **Response Length:** Capped at **512 tokens** to prevent excessively long responses.
+- **Token Choice:** `top_p=0.95` and `top_k=40` balance creativity and coherence.
+- **Stopping Condition:** The model will stop at a newline (`\n`), ensuring clean output.
+- **Behavior:** **FAQ-style system prompt** guides the model to provide structured, fact-based responses.
+
+These settings create a model that generates concise, focused answers with controlled creativity and a structured format.
+
+- **FIASS:** FAISS VectorStores are essentially specialized data structures that allow for efficient storage, search, and retrieval of vectors (typically embeddings) in high-dimensional spaces. In the context of vector databases or vector search engines, FAISS is often used as the backend for managing and querying large collections of vectors.
+
+---
 ## Why would you choose ChatGoogleGenerativeAI over Vertex AI for building a customer service agent?
-
 
 For a customer service agent, ChatGoogleGenerativeAI provides a specialized, highly optimized solution for handling dynamic, multi-turn conversations, understanding user intent, and generating natural, contextually appropriate responses. These are all essential features for ensuring a smooth and effective customer service experience. On the other hand, Vertex AI may be better suited for more complex, multi-modal AI tasks but may not have the same out-of-the-box conversational capabilities as ChatGoogleGenerativeAI.
