@@ -165,11 +165,6 @@ Repeat or Escalate
 * “How do I reset my password?”
 * “You messed up my last order” → triggers escalation.
 
----
-
-### 💡 Tip
-
-Use Gemini’s **function calling** or **LangChain agents** to allow dynamic tool usage (e.g., calling `check_order_status(order_id)` when the user mentions an order).
 
 ---
 # Understanding Model Parameters
