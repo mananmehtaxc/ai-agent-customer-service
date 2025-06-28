@@ -216,6 +216,6 @@ These settings create a model that generates concise, focused answers with contr
 - **FIASS:** FAISS VectorStores are essentially specialized data structures that allow for efficient storage, search, and retrieval of vectors (typically embeddings) in high-dimensional spaces. In the context of vector databases or vector search engines, FAISS is often used as the backend for managing and querying large collections of vectors.
 
 ---
-## Why would you choose ChatGoogleGenerativeAI over Vertex AI for building a customer service agent?
+### Why would you choose ChatGoogleGenerativeAI over Vertex AI for building a customer service agent?
 
 For a customer service agent, ChatGoogleGenerativeAI provides a specialized, highly optimized solution for handling dynamic, multi-turn conversations, understanding user intent, and generating natural, contextually appropriate responses. These are all essential features for ensuring a smooth and effective customer service experience. On the other hand, Vertex AI may be better suited for more complex, multi-modal AI tasks but may not have the same out-of-the-box conversational capabilities as ChatGoogleGenerativeAI.
